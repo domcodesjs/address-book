@@ -16,5 +16,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/address', require('./routes/index'));
+app.get('*', (req, res) => {
+  res.status(404).json({
+    success: false,
+    message: 'Not Found'
+  });
+});
 
 app.listen(PORT, () => console.log(`Express is running on port ${PORT}`));
