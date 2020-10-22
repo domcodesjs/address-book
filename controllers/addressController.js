@@ -76,12 +76,7 @@ exports.verifyAddress = (req, res, next) => {
     });
   }
 
-  if (
-    !zip ||
-    typeof zip !== 'number' ||
-    zip.toString().trim() === '' ||
-    zip.toString().length !== 5
-  ) {
+  if (!zip || typeof zip !== 'number' || zip.toString().length !== 5) {
     return res.status(400).json({
       success: false,
       message: 'You must provide a 5 digit numeric zip code'
